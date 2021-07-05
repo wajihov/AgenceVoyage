@@ -1,0 +1,180 @@
+<div class="container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+            <a class="navbar-brand brand-logo" href="../../index.html">
+                <!-- <img
+                    src="http://www.bootstrapdash.com/demo/purple/jquery/template/assets/images/logo.svg"
+                    alt="logo" /> -->
+            </a>
+            <a class="navbar-brand brand-logo-mini" href="../../index.html">
+                <!-- <img
+                    src="http://www.bootstrapdash.com/demo/purple/jquery/template/assets/images/logo-mini.svg"
+                    alt="logo" /> -->
+            </a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                <span class="mdi mdi-menu"></span>
+            </button>
+            <div class="search-field d-none d-md-block">
+                <form class="d-flex align-items-center h-100" action="#">
+                    <div class="input-group">
+                        <div class="input-group-prepend bg-transparent">
+                            <i class="input-group-text border-0 mdi mdi-magnify"></i>
+                        </div>
+                        <input type="text" class="form-control bg-transparent border-0" placeholder="Search projects">
+                    </div>
+                </form>
+            </div>
+            <ul class="navbar-nav navbar-nav-right">
+
+                <li class="nav-item nav-profile dropdown">
+                    <a href="#" class="nav-link" >
+                        <div *ngIf="role!='admin'" class="nav-profile-img">
+                            <img *ngIf="role=='client'" src="http://localhost:9091/downloadFile/{{user.image}}" alt="image">
+                            <img  *ngIf="role=='company'" src="http://localhost:9091/downloadFile/{{company.image}}" alt="image">
+                           
+                            <span class="availability-status online"></span>
+                            <!--change to offline or busy as needed-->
+                        </div>
+                        <div class="nav-profile-text d-flex flex-column">
+                            <p class="mb-1 text-black">{{user.firstName}} {{user.lastName}}</p>
+                        </div>
+
+                    </a>
+                    <!-- <a class="nav-link" href="#" >
+                        <div class="nav-profile-img">
+                            <img src="http://localhost:9091/downloadFile/{{user.image}}" alt="image">
+                            <span class="availability-status online"></span>
+                        </div>
+                        <div class="nav-profile-text">
+                            <p class="mb-1 text-black">{{user.firstName}} {{user.lastName}}</p>
+                        </div>
+                    </a> -->
+
+                </li>
+                <li class="nav-item d-none d-lg-block full-screen-link">
+                    <a class="nav-link">
+                        <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+                    </a>
+                </li>
+
+                <li class="nav-item nav-logout d-none d-lg-block">
+                    <a class="nav-link" href="#" (click)="logout()">
+                        <i class="mdi mdi-power"></i>
+                    </a>
+                </li>
+
+            </ul>
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                data-toggle="offcanvas">
+                <span class="mdi mdi-menu"></span>
+            </button>
+        </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_settings-panel.html -->
+
+        <!-- partial -->
+        <!-- partial:../../partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span class="menu-title">Home</span>
+                        <i class="fa fa-home menu-icon"></i>
+                    </a>
+                </li>
+                <li *ngIf="role =='company'" class="nav-item">
+                    <a class="nav-link" routerLink="/Dashboard/CompanyProfile">
+                        <span class="menu-title">Profile</span>
+                        <i class="fa fa-user menu-icon"></i>
+                    </a>
+                </li>
+                <li *ngIf="role =='company'" class="nav-item">
+                    <a class="nav-link" routerLink="/Dashboard/AddCursus">
+                        <span class="menu-title">Add Cursus</span>
+                        <i class="fa fa-plus-circle menu-icon"></i>
+                    </a>
+                </li>
+                <li *ngIf="role =='company'" class="nav-item">
+                    <a class="nav-link" routerLink="/Dashboard/ListCursus">
+                        <span class="menu-title">My cursus</span>
+                        <i class="fa fa-list-alt menu-icon"></i>
+                    </a>
+                </li>
+                <li *ngIf="role =='client'" class="nav-item">
+                    <a class="nav-link" routerLink="/Dashboard">
+                        <span class="menu-title">Profile</span>
+                        <i class="fa fa-user menu-icon"></i>
+                    </a>
+                </li>
+                <li *ngIf="role =='client'" class="nav-item">
+                    <a class="nav-link" routerLink="/Dashboard/List">
+                        <span class="menu-title">My publications</span>
+                        <i class="fa fa-list-alt menu-icon"></i>
+                    </a>
+                </li>
+                <li *ngIf="role =='admin'" class="nav-item">
+                    <a class="nav-link" href="#" routerLink="/Dashboard/AdminListPublication">
+                        <span class="menu-title">List publication</span>
+                        <i class="mdi mdi-file-document-box menu-icon"></i>
+                    </a>
+                </li>
+
+                <li *ngIf="role =='admin'" class="nav-item">
+                    <a class="nav-link" href="#" routerLink="/Dashboard/AdminListCursus">
+                        <span class="menu-title">List cursus</span>
+                        <i class="mdi mdi-map-marker-multiple menu-icon"></i>
+                    </a>
+                </li>
+                <li *ngIf="role =='admin'" class="nav-item">
+                        <a class="nav-link" href="#" routerLink="/Dashboard/Statistique">
+                            <span class="menu-title">Statistiques</span>
+                            <i class="mdi mdi-chart-bar menu-icon"></i>
+                        </a>
+                    </li>
+                <li *ngIf="role =='admin'" class="nav-item">
+                    <a class="nav-link" href="#" routerLink="/Dashboard/AdminListClient">
+                        <span class="menu-title">List client</span>
+                        <i class="mdi mdi-human-male menu-icon"></i>
+                    </a>
+                </li>
+                <li *ngIf="role =='admin'" class="nav-item">
+                    <a class="nav-link" href="#" routerLink="/Dashboard/AdminListCompany">
+                        <span class="menu-title">List company</span>
+                        <i class="mdi mdi-wallet-travel menu-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" (click)="logout()">
+                        <span class="menu-title">Signout</span>
+                        <i class="fa fa-power-off menu-icon"></i>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <router-outlet></router-outlet>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:../../partials/_footer.html -->
+            <footer class="footer">
+                <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 . All
+                        rights reserved.</span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i
+                            class="mdi mdi-heart text-danger"></i></span>
+                </div>
+            </footer>
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>

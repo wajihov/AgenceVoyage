@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-md-6 stretch-card grid-margin">
+        <div class="card bg-gradient-danger card-img-holder text-white" style="cursor: pointer" routerLink="/Dashboard/AdminListClient">
+            <div class="card-body">
+                <img src="./../../../assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image">
+                <h4 class="font-weight-normal mb-3"> Client <i class="mdi mdi-human-male mdi-24px float-right"></i>
+                </h4>
+                <h2 class="mb-5">{{stat.clientStat.active + stat.clientStat.deleted}}</h2>
+                <h6 class="card-text"> Activated {{stat.clientStat.active}}</h6>
+                <h6 class="card-text">Deleted {{stat.clientStat.deleted}}</h6>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 stretch-card grid-margin">
+        <div class="card bg-gradient-info card-img-holder text-white" style="cursor: pointer" routerLink="/Dashboard/AdminListCompany">
+            <div class="card-body">
+                <img src="./../../../assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image">
+                <h4 class="font-weight-normal mb-3"> Company <i
+                        class="mdi mdi-wallet-travel mdi-24px float-right"></i>
+                </h4>
+                <h2 class="mb-5">{{stat.companyStat.active + stat.companyStat.deleted}}</h2>
+                <h6 class="card-text"> Activated {{stat.companyStat.active}}</h6>
+                <h6 class="card-text">Deleted {{stat.companyStat.deleted}}</h6>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 stretch-card grid-margin">
+        <div class="card bg-gradient-success card-img-holder text-white" style="cursor: pointer" routerLink="/Dashboard/AdminListPublication">
+            <div class="card-body">
+                <img src="./../../../assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image">
+                <h4 class="font-weight-normal mb-3"> Publication <i class="mdi mdi-file-document-box mdi-24px float-right"></i>
+                </h4>
+                <h2 class="mb-5">{{stat.publicationStat.active +stat.publicationStat.draft+ stat.publicationStat.deleted}}</h2>
+                <h6 class="card-text"> Activated {{stat.publicationStat.active}}</h6>
+                <h6 class="card-text"> Draft {{stat.publicationStat.draft}}</h6>
+                <h6 class="card-text">Deleted {{stat.publicationStat.deleted}}</h6>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 stretch-card grid-margin">
+        <div class="card bg-gradient-warning card-img-holder text-white" style="cursor: pointer" routerLink="/Dashboard/AdminListCursus">
+            <div class="card-body">
+                <img src="./../../../assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image">
+                <h4 class="font-weight-normal mb-3"> Cursus <i class="mdi mdi-map-marker-multiple mdi-24px float-right"></i>
+                </h4>
+                <h2 class="mb-5">{{stat.cursusStat.active +stat.cursusStat.draft+ stat.cursusStat.deleted}}</h2>
+                <h6 class="card-text"> Activated {{stat.cursusStat.active}}</h6>
+                <h6 class="card-text"> Draft {{stat.cursusStat.draft}}</h6>
+                <h6 class="card-text">Deleted {{stat.cursusStat.deleted}}</h6>
+            </div>
+        </div>
+    </div>
+    
+</div>

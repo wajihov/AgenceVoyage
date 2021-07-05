@@ -1,0 +1,239 @@
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
+        <div class="row flex-grow">
+          <div class="col-lg-6 d-flex align-items-center justify-content-center">
+            <div class="auth-form-transparent text-left p-3">
+              <div class="brand-logo">
+                <!-- <img src="http://www.bootstrapdash.com/demo/purple/jquery/template/assets/images/logo.svg" alt="logo"> -->
+              </div>
+              <h4>Register as Company</h4>
+              <h6 class="font-weight-light">Join us today! It takes only few steps</h6>
+              <form class="pt-3" [formGroup]="registerCompanyData" (ngSubmit)="registerCompany()">
+                <div class="form-group">
+                  <label>Company Name</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                      <span class="input-group-text bg-transparent border-right-0">
+                        <i class="mdi mdi-account-outline text-primary"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control form-control-lg border-left-0" placeholder="Comapany Name" formControlName="companyName">
+                  </div>
+                </div>
+                <div *ngIf="registerCompanyData.hasError('required','companyName')">
+                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Please enter
+                      your Company Name
+                    </p>
+                  </div>
+                  <div *ngIf="registerCompanyData.hasError('maxlength','companyName')">
+                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> companyName
+                      must be under 10 caracters</p>
+                  </div>
+                  <div *ngIf="registerCompanyData.hasError('minlength','companyName')">
+                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> companyName
+                      must be superior than 3 caracters</p>
+                  </div>
+                  <div *ngIf="registerCompanyData.hasError('pattern','companyName')">
+                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> companyName
+                      must be alphabetic</p>
+                  </div>
+                <div class="form-group">
+                  <label>Address</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                      <span class="input-group-text bg-transparent border-right-0">
+                        <i class="mdi mdi-account-outline text-primary"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control form-control-lg border-left-0" required placeholder="Address" formControlName="address">
+                  </div>
+                </div>
+                <div *ngIf="registerCompanyData.hasError('required','address')">
+                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Please enter
+                      your address
+                    </p>
+                  </div>
+                  <div *ngIf="registerCompanyData.hasError('maxlength','address')">
+                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Address
+                      must be under 25 caracters</p>
+                  </div>
+                  <div *ngIf="registerCompanyData.hasError('minlength','address')">
+                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Address
+                      must be superior than 10 caracters</p>
+                  </div>
+                  <div *ngIf="registerCompanyData.hasError('pattern','address')">
+                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Address
+                      mustn't contain special caracters</p>
+                  </div>
+                <div class="form-group">
+                  <label>City</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                      <span class="input-group-text bg-transparent border-right-0">
+                        <i class="mdi mdi-account-outline text-primary"></i>
+                      </span>
+                    </div>
+                    <!-- <input type="text" class="form-control form-control-lg border-left-0" placeholder="City" formControlName="city"> -->
+                    <select class="form-control form-control-lg border-left-0" placeholder="City" formControlName="city" required>
+                        <option>Ariana</option>
+                        <option>Beja</option>
+                        <option>Ben Arous</option>
+                        <option>Bizerte</option>
+                        <option>Gabes</option>
+                        <option>Gafsa</option>
+                        <option>Jendouba</option>
+                        <option>Kairouane</option>
+                        <option>Kasserine</option>
+                        <option>kébeli</option>
+                        <option>Le Kef</option>
+                        <option>Mahdia</option>
+                        <option>La Manouba</option>
+                        <option>Médenine</option>
+                        <option>Monastir</option>
+                        <option>Nabeul</option>
+                        <option>Sfax</option>
+                        <option>Sidi Bouzid</option>
+                        <option>Siliana</option>
+                        <option>Sousse</option>
+                        <option>Tataouine</option>
+                        <option>Touzeur</option>
+                        <option>Tunis</option>
+                        <option>Zaghouane</option>
+                                          
+                         </select>
+                  </div>
+                </div>
+                <div *ngIf="registerCompanyData.hasError('required','city')">
+                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Please select your city
+                    </p>
+                  </div>
+                <div class="form-group">
+                  <label>Code postal</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                      <span class="input-group-text bg-transparent border-right-0">
+                        <i class="mdi mdi-account-outline text-primary"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control form-control-lg border-left-0" placeholder="Code Postal" formControlName="cP">
+                  </div>
+                </div>
+                <div *ngIf="registerCompanyData.hasError('required','cP')">
+                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Please enter
+                      your zip code
+                    </p>
+                  </div>
+                  <div *ngIf="registerCompanyData.hasError('max','cP')">
+                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> your zip code must contain 4 caracters</p>
+                  </div>
+                  <div *ngIf="registerCompanyData.hasError('min','cP')">
+                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> your zip code must contain 4 caracters</p>
+                  </div>
+                  <div *ngIf="registerCompanyData.hasError('pattern','cP')">
+                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> zip code
+                      must be numeric</p>
+                  </div>
+                <div class="form-group">
+                  <label>Telephone</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                      <span class="input-group-text bg-transparent border-right-0">
+                        <i class="mdi mdi-account-outline text-primary"></i>
+                      </span>
+                    </div>
+                    <input type="number" class="form-control form-control-lg border-left-0" placeholder="Telephone" formControlName="tel" required>
+                  </div>
+                </div>
+                <div *ngIf="registerCompanyData.hasError('required','tel')">
+                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Please enter
+                      your Telephone's number
+                    </p>
+                  </div>
+                  <div *ngIf="registerCompanyData.hasError('max','tel')">
+                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> your telephone's number must contain 8 caracters</p>
+                  </div>
+                  <div *ngIf="registerCompanyData.hasError('min','tel')">
+                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> your telephone's number must contain 8 caracters</p>
+                  </div>
+                  <div *ngIf="registerCompanyData.hasError('pattern','tel')">
+                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Last name
+                      must be numeric</p>
+                  </div>
+                <div class="form-group">
+                  <label>Username</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                      <span class="input-group-text bg-transparent border-right-0">
+                        <i class="mdi mdi-email-outline text-primary"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control form-control-lg border-left-0" placeholder="Username" formControlName="userName" (keyup)="verifUserName($event)"required>
+                  </div>
+                </div>
+                <div *ngIf="result">
+                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> userName existant déjà</p>
+                  </div>
+                  <div *ngIf="registerCompanyData.hasError('required','userName')">
+                      <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Please enter
+                        your userName
+                      </p>
+                    </div>
+                  <div *ngIf="registerCompanyData.hasError('maxlength','userName')">
+                      <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> userName
+                        must be under 10 caracters</p>
+                    </div>
+                    <div *ngIf="registerCompanyData.hasError('minlength','userName')">
+                      <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> userName
+                        must be superior than 3 caracters</p>
+                    </div>
+    
+                <div class="form-group">
+                  <label>Password</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                      <span class="input-group-text bg-transparent border-right-0">
+                        <i class="mdi mdi-lock-outline text-primary"></i>
+                      </span>
+                    </div>
+                    <input type="password" class="form-control form-control-lg border-left-0" id="exampleInputPassword" placeholder="Password" formControlName="password" (keyup)="checkPasswordStrength()" required>
+                  </div>
+                </div>
+                <div *ngIf="registerCompanyData.hasError('required', 'password')">
+                    <p style="color: red;"><i
+                            class="fa fa-exclamation-triangle"></i>
+                        Please enter
+                        your new password superior than 8 caracters
+                    </p>
+                </div>
+                <div *ngIf="registerCompanyData.hasError('minlength', 'password')">
+                    <p style="color: red;"><i
+                            class="fa fa-exclamation-triangle"></i>
+                        Please enter
+                        your new password superior than 8 caracters
+                    </p>
+                </div>
+                <div *ngIf="!registerCompanyData.hasError('minlength', 'password')">
+                    <p style="color: green">
+                        
+                            {{currentPasswordStrength}} 
+  
+                    </p>
+                </div>
+                <div class="mt-3">
+                  <button class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" type="submit" [disabled]="result || (!registerCompanyData.valid)" >SIGN UP</button>
+                </div>
+                <div class="text-center mt-4 font-weight-light"> Already have an account? <a href="#" class="text-primary">Login</a>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-lg-6 register-half-bg d-flex flex-row">
+            <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2018 All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>

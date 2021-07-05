@@ -1,0 +1,32 @@
+<div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Clients</h4>
+          <label for="filterText">Filter:</label><input class="form-control" type="text" name="filterText" [(ngModel)]="filterText">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th> Client </th>
+                <th> First name </th>
+                <th> Last name </th>
+                <th> Birthday </th>
+                <th> Status </th>
+                <th> Action </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let client of listClient | filter:filterText">
+                <td class="py-1">
+                  <img src="http://localhost:9091/downloadFile/{{client.image}}" alt="image">
+                </td>
+                <td> {{client.firstName}} </td>
+                <td>
+                        {{client.lastName}}
+                </td>
+                <td>{{client.birthday | date:'dd MMM yyyy'}} </td>
+                <td> {{client.status}} </td>
+                <td> <i  *ngIf="client.status!='deleted'" class="mdi mdi-delete-forever-outline" style="cursor: pointer; text-align: center;" (click)="showSwal(client.id)"></i> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>

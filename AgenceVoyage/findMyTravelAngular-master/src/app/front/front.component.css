@@ -1,0 +1,9 @@
+.list {
+    
+    background: #350a4e;
+    padding-left: 10px;
+    width: 200px;
+    position: absolute;
+    top: 36px;
+    z-index: 5;
+}

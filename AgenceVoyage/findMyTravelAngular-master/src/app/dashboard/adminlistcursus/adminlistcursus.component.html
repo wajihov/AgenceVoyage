@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="form-group row">
+        <div class="col-12">
+            <label class="col-form-label">Filter</label>
+            <input class="form-control" type="text" name="filter" [(ngModel)]="filterText" autocomplete="off"
+                placeholder=" Tap filter here.">
+        </div>
+    </div>
+    <div class="row grid-margin" *ngFor="let cursus of listCursus | filter:filterText">
+        <div class="col-lg-12">
+            <div class="card"
+                [ngStyle]="{'background-color':cursus.status=='deleted'?'#FFFBFB':'none','border':cursus.status=='deleted'?' solid 2px red':'none'}"
+                style="border: solid 0.5px grey">
+                <div class="card-body">
+                    <div class=" row justify-content-between">
+                        <h6 class="col-auto">Status: {{cursus.status}}</h6>
+                        <div class="btn-group">
+                                <button *ngIf="cursus.status!='deleted'" type="button" class="btn btn-gradient-danger btn-rounded btn-icon">
+                                        <i class="mdi mdi-delete-forever" style="cursor: pointer;" (click)="showSwal(cursus.id)"></i> 
+                                      </button>
+                            
+                        </div>
+                    </div>
+                    <div class=" row justify-content-between mt-2">
+                        <h4 class="col-auto card-title">{{cursus.title}}</h4>
+                    </div>
+
+                    <div id="lightgallery"
+                        style="border-radius: 8px; border:solid 0.8px rgba(178, 105, 252, 0.2); overflow-y: auto; max-height: 300px;"
+                        class="lightGallery row justify-content-center mt-3">
+                        <ng-container *ngFor="let publication of cursus.listPublication">
+                            <ng-container *ngFor="let image of publication.listImage">
+                                <img class="col-3 mr-1" thumbail src="http://localhost:9091/downloadFile/{{image.link}}"
+                                    alt="image small">
+
+                            </ng-container>
+
+                        </ng-container>
+                    </div>
+                    <p class="card-text row mt-3">
+                        <i class="col-auto mdi mdi-airplane-takeoff"></i>Departure:
+                        {{cursus.departDate | date:'dd MMM yyyy'}}
+                        <i class="col-auto mdi mdi-airplane-landing"></i>Arrival:
+                        {{cursus.returnDate | date:'dd MMM yyyy'}}
+                    </p>
+                    <p class="card-text row"><i class="col-auto mdi mdi-weight"></i>Price:
+                        {{cursus.price | number:'.3'}}
+                        TND </p>
+
+                    <div class="card card-inverse-primary row">
+                        <div class="card-body">
+                            <p class="card-text">{{cursus.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

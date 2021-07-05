@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="form-group row">
+        <div class="col-12">
+            <label class="col-form-label">Filter</label>
+            <input class="form-control" type="text" name="filter" [(ngModel)]="filterText" autocomplete="off"
+                placeholder=" Tap filter here.">
+        </div>
+    </div>
+    <div class="row">
+        <div class="card-columns">
+
+            <div *ngFor="let publication of listPublication | filter: filterText">
+
+                <div class="card" style="cursor: pointer;">
+                    <div class="card-header">
+                        <label class="text-muted">Status: {{publication.status}}</label>
+                        <button *ngIf="publication.status!='deleted'" type="button"
+                            class="btn btn-gradient-danger btn-rounded btn-icon">
+                            <i class="mdi mdi-delete-forever" style="cursor: pointer;"
+                                (click)="showSwal(publication)"></i>
+                        </button>
+                    </div>
+
+                    <img *ngIf="publication.listImage[0]" class="card-img-top"
+                        src="http://localhost:9091/downloadFile/{{publication.listImage[0].link}}" alt="card images">
+
+                    <div class="card-body">
+                        <p class="text-muted">{{publication.address}}</p>
+                        <h5>{{publication.description}}</h5>
+                        <div class="d-flex align-items-center justify-content-between text-muted border-top py-3 mt-3">
+                            <p class="mb-0">Published on {{publication.createdDate | date:'fullDate'}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,274 @@
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title"> Profile </h3>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card"
+                style="background-color: rgb(236, 217, 255) !important; border: solid 2px gray !important;">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h3>{{company.companyName}}</h3>
+
+                                </div>
+                                <div>
+                                    <button class="btn btn-outline-secondary btn-icon">
+                                        <i class="mdi mdi-comment-processing"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-12">
+                            <div class="border-bottom text-center pb-4">
+                                <img src="http://localhost:9091/downloadFile/{{company.image}}" alt="profile"
+                                    class="img-lg rounded-circle mb-3 taille" />
+                                <p> <b>{{company.slogan}}</b>
+                                </p>
+                                <div class="d-flex justify-content-between">
+                                    <button class="btn btn-gradient-success" data-toggle="modal"
+                                        data-target="#exampleModal-3">Change password</button>
+                                    <div class="modal fade" id="exampleModal-3" tabindex="-1" role="dialog"
+                                        aria-labelledby="ModalLabel11" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="ModalLabel11">Change password </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form [formGroup]="modifyPassData" (ngSubmit)="modifPass()">
+                                                        <div class="form-group">
+                                                            <label for="lastPassword" class="col-form-label">Last
+                                                                password:</label>
+                                                            <input type="password" class="form-control"
+                                                                id="lastPassword" formControlName="lastPassword"
+                                                                (keyup)="checkLastPassword()">
+                                                            <div
+                                                                *ngIf="!lastPassword && !modifyPassData.controls.lastPassword.errors">
+                                                                <p style="color: red;"><i
+                                                                        class="fa fa-exclamation-triangle"></i>
+                                                                    Wrong password
+                                                                </p>
+                                                            </div>
+                                                            <div *ngIf="modifyPassData.controls.lastPassword.errors">
+
+                                                                <div
+                                                                    *ngIf="modifyPassData.controls.lastPassword.errors.required">
+                                                                    <p style="color: red;"><i
+                                                                            class="fa fa-exclamation-triangle"></i>
+                                                                        Please enter your last password
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <label for="newPassword" class="col-form-label">New
+                                                                password:</label>
+                                                            <input type="password" class="form-control" id="newPassword"
+                                                                formControlName="newPassword"
+                                                                (keyup)="checkPasswordStrength();checkPassword()">
+                                                            <div *ngIf="modifyPassData.controls.newPassword.errors">
+                                                                <p style="color: red;"><i
+                                                                        class="fa fa-exclamation-triangle"></i>
+                                                                    Please enter
+                                                                    your new password superior than 8 caracters
+                                                                </p>
+                                                            </div>
+                                                            <div *ngIf="!modifyPassData.controls.newPassword.errors">
+                                                                <p style="color: green">
+                                                                    <i class="fa fa-exclamation-triangle">
+                                                                        {{currentPasswordStrength}} </i>
+
+                                                                </p>
+                                                            </div>
+                                                            <label for="confirmPassword" class="col-form-label">Confirm
+                                                                password:</label>
+                                                            <input type="password" class="form-control"
+                                                                id="confirmPassword" formControlName="confirmPassword"
+                                                                (keyup)="checkPassword()">
+                                                            <div *ngIf="!confirm">
+                                                                <p style="color: red;"><i
+                                                                        class="fa fa-exclamation-triangle"></i> Please
+                                                                    check confirm password
+                                                                </p>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-success"
+                                                                [disabled]="modifyPassData.controls.lastPassword.errors||modifyPassData.controls.confirmPassword.errors||modifyPassData.controls.newPassword.errors||!confirm">Update</button>
+                                                            <button type="button" class="btn btn-light"
+                                                                data-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <button class="btn btn-gradient-success" data-toggle="modal"
+                                        data-target="#exampleModal-2">Change image</button>
+                                    <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog"
+                                        aria-labelledby="ModalLabel11" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="ModalLabel11">Change profile image </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h5 class="card-title">Select a file for upload:</h5>
+                                                    <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-success"
+                                                        (click)="confirmUpload()" [disabled]="!file"
+                                                        data-dismiss="modal">Confirm</button>
+                                                    <button type="button" class="btn btn-light"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="border-bottom py-4">
+                            <div class="d-flex mb-3">
+                                <div class="progress progress-md flex-grow">
+                                    <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="55"
+                                        style="width: 55%" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="progress progress-md flex-grow">
+                                    <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="75"
+                                        style="width: 75%" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="py-4">
+
+                            <p class="clearfix">
+                                <span class="float-left"> Address </span>
+                                <span class="float-right text-muted"> &nbsp;&nbsp;&nbsp; {{company.address}}</span>
+                            </p>
+                            <p class="clearfix">
+                                <span class="float-left"> City </span>
+                                <span class="float-right text-muted"> &nbsp;&nbsp;&nbsp; {{company.city}}</span>
+                            </p>
+                            <p class="clearfix">
+                                <span class="float-left"> Code postal </span>
+                                <span class="float-right text-muted"> &nbsp;&nbsp;&nbsp; {{company.cP}}</span>
+                            </p>
+                            <p class="clearfix">
+                                <span class="float-left"> Telephone </span>
+                                <span class="float-right text-muted"> &nbsp;&nbsp;&nbsp; {{company.tel}}</span>
+                            </p>
+
+                        </div>
+                        <div class="modal fade" id="exampleModal-4" tabindex="-1" role="dialog"
+                            aria-labelledby="ModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="ModalLabel" >Modify profile</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> 
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form [formGroup]="modifyCompanyData" (ngSubmit)="modifyCompany()">
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="col-form-label">Company
+                                                    Name:</label>
+                                                <input type="text" class="form-control" formControlName="companyName">
+                                                <div *ngIf="modifyCompanyData.controls.companyName.errors">
+                                                    <div *ngIf="modifyCompanyData.controls.companyName.errors.required">
+                                                        <p style="color: red;"><i
+                                                                class="fa fa-exclamation-triangle"></i> Please enter
+                                                            your company name
+                                                        </p>
+                                                    </div>
+                                                    <div *ngIf="modifyCompanyData.controls.companyName.errors.maxlength">
+                                                        <p style="color: red;"><i
+                                                                class="fa fa-exclamation-triangle"></i> First name
+                                                            must be under 10 caracters</p>
+                                                    </div>
+                                                    <div *ngIf="modifyCompanyData.controls.companyName.errors.minlength">
+                                                        <p style="color: red;"><i
+                                                                class="fa fa-exclamation-triangle"></i> First name
+                                                            must be superior than 3 caracters</p>
+                                                    </div>
+                                                    <div *ngIf="modifyCompanyData.controls.companyName.errors.pattern">
+                                                        <p style="color: red;"><i
+                                                                class="fa fa-exclamation-triangle"></i> First name
+                                                            must be alphabetic</p>
+                                                    </div>
+
+                                                </div>
+                                                <label for="recipient-name" class="col-form-label">Slogan:</label>
+                                                <input type="text" class="form-control" formControlName="slogan">
+
+                                                <label for="recipient-name" class="col-form-label">Address:</label>
+                                                <input type="text" class="form-control" formControlName="address">
+                                                <div *ngIf="modifyCompanyData.controls.address.errors">
+                                                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i>
+                                                        Address is required !
+                                                    </p>
+                                                </div>
+                                                <label for="recipient-name" class="col-form-label">City:</label>
+                                                <input type="text" class="form-control" formControlName="city">
+                                                <div *ngIf="modifyCompanyData.controls.city.errors">
+                                                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i>
+                                                        City is required !
+                                                    </p>
+                                                </div>
+                                                <label for="recipient-name" class="col-form-label">Code postal:</label>
+                                                <input type="text" class="form-control" formControlName="cP">
+                                                <div *ngIf="modifyCompanyData.controls.cP.errors">
+                                                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i>
+                                                        Code Postal is required !
+                                                    </p>
+                                                </div>
+                                                <label for="recipient-name" class="col-form-label">Telephone:</label>
+                                                <input type="text" class="form-control" formControlName="tel">
+                                                <div *ngIf="modifyCompanyData.controls.tel.errors">
+                                                    <p style="color: red;"><i class="fa fa-exclamation-triangle"></i>
+                                                        Telephone is required !
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-success"
+                                                    [disabled]="modifyCompanyData.controls.tel.errors||modifyCompanyData.controls.cP.errors||modifyCompanyData.controls.city.errors||modifyCompanyData.controls.address.errors||modifyCompanyData.controls.companyName.errors">Update</button>
+                                                <button type="button" class="btn btn-light"
+                                                    data-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-gradient-primary btn-block" data-toggle="modal"
+                            data-target="#exampleModal-4" (click)="modalUpdate()">Modify your profile</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

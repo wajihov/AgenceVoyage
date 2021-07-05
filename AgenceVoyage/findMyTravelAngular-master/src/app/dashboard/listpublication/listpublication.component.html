@@ -1,0 +1,365 @@
+<div *ngIf="showPublication">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex flex-column flex-md-row align-items-center">
+                    <h4 class="mb-md-0 mb-4">My wall</h4>
+
+                    <div
+                        class="wrapper ml-md-auto d-flex flex-column flex-md-row kanban-toolbar ml-n2 ml-md-0 mt-4 mt-md-0">
+
+                        <div class="d-flex mt-4 mt-md-0">
+                            <button type="button" class="btn btn-gradient-success" (click)="showNhide()">
+                                {{textButton}}
+                            </button>
+
+                            <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">New publication</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                         <form>
+                                            <div class="dropzone dz-clickable" fileDrop (filesDropped)="handleDrop($event)"
+                                                (filesHovered)="dropzoneState($event)"
+                                                [ngClass]="{'active': dropzoneActive}">
+
+                                                <i class="fa fa-cloud-upload fa-2x"></i>
+
+                                            </div>
+                                        </form> -->
+
+                            <!-- 
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-success">Submit</button>
+                                        <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="card" *ngIf="show">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- <form [formGroup]="uploadForm" (ngSubmit)="uploadSubmit()">
+
+
+                    <br>
+
+                    <div ng2FileDrop [uploader]="uploader" class="dropzone dz-clickable">
+                        Drag and drop files to upload
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="90%">
+                                    File Name
+                                </th>
+                                <th width="10%">
+                                    Remove
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of uploader.queue">
+                                <th width="90%">
+                                    (NaN MB)
+                                </th>
+                                <th class="text-center" width="10%">
+
+                                    <i class="fas fa-trash-alt" (click)="item.remove()">delete</i>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <button raised-button color="accent" [disabled]="!uploadForm.valid" type="submit">Upload
+                        Data</button>
+                </form> -->
+                    <label ng2FileDrop for="uploader-input" [ngClass]="{'drop-file-over': hasBaseDropZoneOver}"
+                        (fileOver)="fileOverBase($event)" [uploader]="uploader" class="area">
+                        Drop or select files here
+                    </label>
+                    <input type="file" id="uploader-input" ng2FileSelect [uploader]="uploader" multiple
+                        style="display:none" />
+                </div>
+                <div class="col-lg-12" *ngIf="uploader.queue.length>0">
+                    <div class="card">
+                        <div class="card-body">
+                            <div id="lightgallery" class="row lightGallery align-items-center">
+                                <div class="col-md-3" *ngFor="let item of uploader.queue">
+                                    <div class="hovereffect">
+                                        <img class="image-tile " src="" thumbnail [image]="item?._file"
+                                            alt="image small">
+                                        <div class="overlay">
+                                            <i class="info" class="fa fa-trash-o" (click)="item.remove()"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-12">
+                    <label class="col-form-label">Search by Address</label>
+                </div>
+                <div class="col-lg-12">
+                    <mat-form-field style="width: 100% !important;">
+                        <input matInput placeholder="Search" [matAutocomplete]="auto" [formControl]="searchAddressCtrl"
+                            (keyup)="autocomplete($event)">
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+                            <ng-container *ngIf="!isLoading">
+                                <mat-option *ngFor="let address of filterAddress" [value]="address.formatted"
+                                    (onSelectionChange)="lonLat()">
+                                    <span><b>{{address.formatted}}</b></span>
+                                </mat-option>
+                            </ng-container>
+                        </mat-autocomplete>
+                        <mat-error *ngIf="searchAddressCtrl.errors"> <i
+                                class="fa fa-exclamation-triangle pull-left"></i>
+                            Address is required</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <form [formGroup]="dataPublication" (ngSubmit)="share()">
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label class="col-form-label">Cost</label>
+                    </div>
+                    <div class="col-6">
+                        <label class="col-form-label">Duration per day</label>
+                    </div>
+                    <div class="col-6">
+                        <input class="form-control" name="defaultconfig-2" id="defaultconfig-2" type="number"
+                            step="0.001" placeholder="0.0" formControlName="cost">
+                        <div *ngIf="dataPublication.controls.cost.errors">
+                            <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Cost is required
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <input class="form-control" name="defaultconfig-3" id="defaultconfig-3" type="number"
+                            placeholder="0" formControlName="duration">
+                        <div *ngIf="dataPublication.controls.duration.errors">
+                            <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Duration is required
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-lg-12">
+                        <label class="col-form-label">Description</label>
+                    </div>
+                    <div class="col-lg-12">
+                        <textarea id="maxlength-textarea" class="form-control" maxlength="400" rows="2"
+                            placeholder="This text has a limit of 400 chars." formControlName="description"></textarea>
+                        <div *ngIf="dataPublication.controls.description.errors">
+                            <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Description is required
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success pull-right"
+                    [disabled]="searchAddressCtrl.errors||dataPublication.controls.description.errors||dataPublication.controls.duration.errors||dataPublication.controls.cost.errors">Share</button>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="card mt-3" *ngFor="let publication of ListPublication">
+        <div class="card-body">
+            <div class="row px-3  justify-content-center">
+                <div class="col-auto mr-auto d-flex">
+
+                    <div class="d-flex align-items-center text-muted font-weight-light">
+
+                        <i class="mdi mdi-clock icon-sm mr-2"></i>
+                        <span>{{publication.createdDate| date:'medium'}}</span>
+                    </div>
+                </div>
+                <div class="col-auto ml-auto mt-2">
+                    <div class="onoffswitch mt-0 ">
+                        <input type="checkbox" class="onoffswitch-checkbox" id={{publication.id}}
+                            (click)="changeStatus(publication)" [checked]="publication.status!='draft'">
+                        <label class="onoffswitch-label" for={{publication.id}}>
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+
+                </div>
+                <div class="col-auto">
+
+                    <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon mt-2"
+                        (click)="modifyPublication(publication)">
+
+                        <i class="mdi mdi-settings-outline"></i>
+                    </button>
+                    <button type="button" class="btn btn-inverse-primary btn-rounded btn-icon mt-2 ml-1"
+                        (click)="showSwal(publication)">
+                        <i class="mdi mdi-delete-forever-outline"></i>
+                    </button>
+
+                </div>
+
+            </div>
+            <div class="row mt-3  justify-content-center">
+                <div class="col-3 mx-center" *ngFor="let image of publication.listImage">
+                    <img src="http://localhost:9091/downloadFile/{{image.link}}" class="img-thumbnail" alt="image"
+                        style="width: 200px; height: 200px;">
+                </div>
+
+            </div>
+            <div class="d-flex mt-2 align-items-top">
+
+                <div class="mb-0 flex-grow">
+                    <h5 class="mr-2 mb-2">Address</h5>
+                    <p class="mb-0 font-weight-light">{{publication.address}}</p>
+                </div>
+            </div>
+            <div class="d-flex mt-2 align-items-top">
+
+                <div class="mb-0 flex-grow">
+                    <h5 class="mr-2 mb-2">Cost</h5>
+                    <p class="mb-0 font-weight-light">{{publication.cost}}</p>
+                </div>
+            </div>
+            <div class="d-flex mt-2 align-items-top">
+                <div class="mb-0 flex-grow">
+                    <h5 class="mr-2 mb-2">Duration</h5>
+                    <p class="mb-0 font-weight-light">{{publication.duration}}</p>
+                </div>
+            </div>
+            <div class="d-flex mt-2 align-items-top">
+                <div class="mb-0 flex-grow">
+                    <h5 class="mr-2 mb-2">Description</h5>
+                    <p class="mb-0 font-weight-light">{{publication.description}}</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<div *ngIf="!showPublication">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <label ng2FileDrop for="uploader-input" [ngClass]="{'drop-file-over': hasBaseDropZoneOver}"
+                        (fileOver)="fileOverBase($event)" [uploader]="uploader" class="area">
+                        Drop or select files here
+                    </label>
+                    <input type="file" id="uploader-input" ng2FileSelect [uploader]="uploader" multiple
+                        style="display:none" />
+                </div>
+                <div class="col-lg-12" *ngIf="uploader.queue.length>0">
+                    <div class="card">
+                        <div class="card-body">
+                            <div id="lightgallery" class="row lightGallery align-items-center">
+                                <div class="col-md-3" *ngFor="let item of uploader.queue">
+                                    <div class="hovereffect">
+                                        <img class="image-tile " src="" thumbnail [image]="item?._file"
+                                            alt="image small">
+                                        <div class="overlay">
+                                            <i class="info" class="fa fa-trash-o" (click)="item.remove()"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-12">
+                    <label class="col-form-label">Search by Address</label>
+                </div>
+                <div class="col-lg-12">
+                    <mat-form-field style="width: 100% !important;">
+                        <input matInput placeholder="Search" [matAutocomplete]="auto" [formControl]="searchAddressCtrl"
+                            (keyup)="autocomplete($event)">
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+                            <ng-container *ngIf="!isLoading">
+                                <mat-option *ngFor="let address of filterAddress" [value]="address.formatted"
+                                    (onSelectionChange)="lonLat()">
+                                    <span><b>{{address.formatted}}</b></span>
+                                </mat-option>
+                            </ng-container>
+                        </mat-autocomplete>
+                        <mat-error *ngIf="searchAddressCtrl.errors"> <i
+                                class="fa fa-exclamation-triangle pull-left"></i>
+                            Address is required</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <form [formGroup]="dataPublication" (ngSubmit)="editPublication()">
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label class="col-form-label">Cost</label>
+                    </div>
+                    <div class="col-6">
+                        <label class="col-form-label">Duration per day</label>
+                    </div>
+                    <div class="col-6">
+                        <input class="form-control" name="defaultconfig-2" id="defaultconfig-2" type="number"
+                            step="0.001" placeholder="0.0" formControlName="cost">
+                        <div *ngIf="dataPublication.controls.cost.errors">
+                            <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Cost is required
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <input class="form-control" name="defaultconfig-3" id="defaultconfig-3" type="number"
+                            placeholder="0" formControlName="duration">
+                        <div *ngIf="dataPublication.controls.duration.errors">
+                            <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Duration is required
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-lg-12">
+                        <label class="col-form-label">Description</label>
+                    </div>
+                    <div class="col-lg-12">
+                        <textarea id="maxlength-textarea" class="form-control" maxlength="400" rows="2"
+                            placeholder="This text has a limit of 400 chars." formControlName="description"></textarea>
+                        <div *ngIf="dataPublication.controls.description.errors">
+                            <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Description is required
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success pull-right"
+                    [disabled]="searchAddressCtrl.errors||dataPublication.controls.description.errors||dataPublication.controls.duration.errors||dataPublication.controls.cost.errors">Edit</button>
+            </form>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,102 @@
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
+        <div class="row flex-grow">
+          <div class="col-lg-6 d-flex align-items-center justify-content-center">
+            <div class="auth-form-transparent text-left p-3">
+              <div class="brand-logo">
+                <!-- <img src="http://www.bootstrapdash.com/demo/purple/jquery/template/assets/images/logo.svg" alt="logo"> -->
+              </div>
+              <h4>Welcome back!</h4>
+              <h6 class="font-weight-light">Happy to see you again!</h6>
+              <form class="pt-3" [formGroup]="login" (ngSubmit)="onClickLogin()">
+                <div class="form-group">
+                  <label for="exampleInputEmail">Username</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                      <span class="input-group-text bg-transparent border-right-0">
+                        <i class="mdi mdi-account-outline text-primary"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control form-control-lg border-left-0" id="" placeholder="Username" formControlName="userName" (keyup)="verifUserName($event)">
+                  </div>
+                </div>
+                <div *ngIf="!result"><p style="color: red;"><i class="fa fa-exclamation-triangle"></i> userName doesn't exist</p></div>
+                <div class="form-group">
+                  <label for="exampleInputPassword">Password</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                      <span class="input-group-text bg-transparent border-right-0">
+                        <i class="mdi mdi-lock-outline text-primary"></i>
+                      </span>
+                    </div>
+                    <input type="password" class="form-control form-control-lg border-left-0" id="exampleInputPassword" placeholder="Password" formControlName="password" (keyup)="verifPassword($event)">
+                  </div>
+
+                </div>
+                <div *ngIf="!resultPassword"><p style="color: red;"><i class="fa fa-exclamation-triangle"></i>Password doesn't exist</p></div>
+                <div class="my-2 d-flex justify-content-between align-items-center">
+                  <div class="form-check">
+                    <label class="form-check-label text-muted">
+                      <input type="checkbox" class="form-check-input"> Keep me signed in </label>
+                  </div>
+                  <a href="#" class="auth-link text-black" data-toggle="modal" data-target="#exampleModal-4">Forgot password?</a>
+    
+                </div>
+                <div class="modal fade" id="exampleModal-4" tabindex="-1" role="dialog"
+                                aria-labelledby="ModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="ModalLabel">Forgot password</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form [formGroup]="forgotPassword" (ngSubmit)="onClickSend()">
+                                                <div class="form-group">
+                                                    <label for="recipient-name"
+                                                        class="col-form-label">userName:</label>
+                                                    <input type="text" class="form-control" id="recipient-name" formControlName="userName" (keyup)="verifUserName($event)">
+                                                </div>
+                                                <div *ngIf="result"><p style="color: red;"><i class="fa fa-exclamation-triangle"></i> userName n'existe pas</p></div>
+                                                <div class="form-group">
+                                                    <label for="recipient-name"
+                                                        class="col-form-label">Email:</label>
+                                                    <input type="text" class="form-control" formControlName="email">
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="submit" class="btn btn-success" [disabled] = "!forgotPassword.valid" [disabled]="result">Send</button>
+                                                  <button type="button" class="btn btn-light"
+                                                      data-dismiss="modal">Close</button>
+                                              </div>
+                                            </form>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                <div class="my-3">
+                    <button type="submit" [disabled]="!result || !resultPassword" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" >LOGIN</button>
+                 
+                </div>
+                
+                <div class="text-center mt-4 font-weight-light"> Don't have an account? <a class="text-primary" (click)="onClickCreate()">Create</a>
+                </div>
+                <div *ngIf="isOpened" class="create">
+                  <div><a class="text-primary" [routerLink]="['/registerClient']" >Register Client</a></div>
+                  <div><a class="text-primary" [routerLink]="['/registerCompany']" >Register Company</a></div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-lg-6 login-half-bg d-flex flex-row">
+            <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2018 All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>

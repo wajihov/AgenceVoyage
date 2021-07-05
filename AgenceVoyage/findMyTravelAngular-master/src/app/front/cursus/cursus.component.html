@@ -1,0 +1,217 @@
+<!-- Home -->
+
+<div class="home">
+    <div class="home_background parallax-window" data-parallax="scroll" data-image-src=""><img
+            src="../../../assets/images/about_background.jpg"></div>
+    <div class="home_content">
+        <div class="home_title">our cursus</div>
+    </div>
+</div>
+
+<!-- Offers -->
+
+<div class="offers">
+
+    <!-- Search -->
+    <div class="search">
+        <div class="search_inner">
+
+            <!-- Search Contents -->
+
+            <div class="container fill_height no-padding">
+                <div class="row fill_height no-margin">
+                    <div class="col fill_height no-padding" style="padding-top: 40px">
+
+                        <!-- Search Tabs -->
+
+                        <div class="search_tabs_container">
+                            <div
+                                class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                                <div
+                                    class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+                                    <img src="../../../assets/images/suitcase.png" alt=""><span>hotels</span></div>
+                                <div
+                                    class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+                                    <img src="../../../assets/images/bus.png" alt="">car rentals</div>
+                                <div
+                                    class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+                                    <img src="../../../assets/images/departure.png" alt="">flights</div>
+                                <div
+                                    class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+                                    <img src="../../../assets/images/island.png" alt="">trips</div>
+                                <div
+                                    class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+                                    <img src="../../../assets/images/cruise.png" alt="">cruises</div>
+                                <div
+                                    class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+                                    <img src="../../../assets/images/diving.png" alt="">activities</div>
+                            </div>
+                        </div>
+
+                        <!-- Search Panel -->
+
+                        <div class="search_panel active">
+                            <form id="search_form_1"
+                                class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                                <div class="search_item">
+                                    <div>destination</div>
+                                    <input type="text" (keyup)="filterList('destination', addressSearch)"
+                                        class="destination search_input" required="required" name="address"
+                                        [(ngModel)]="addressSearch">
+                                </div>
+                                <div class="search_item">
+                                    <div>price min</div>
+                                    <input type="number" (keyup)="filterList('minPrice', costSearchMin)"
+                                        class="check_in search_input" name="cost" [(ngModel)]="costSearchMin">
+                                </div>
+                                <div class="search_item">
+                                    <div>price max</div>
+                                    <input type="number" (keyup)="filterList('maxPrice', costSearchMax)"
+                                        name="costSearchMax" [(ngModel)]="costSearchMax" class="check_out search_input">
+                                </div>
+                                <div class="search_item p-0">
+                                    <div>check in</div>
+                                    <div class="date search_input">
+                                        <input type="date" class="check_in search_input" name="depatDateSearch"
+                                            [(ngModel)]="depatDateSearch"
+                                            (change)="filterList('departDate', depatDateSearch)">
+
+                                    </div>
+                                </div>
+                                <div class="search_item">
+                                    <div>check out</div>
+                                    <div class="date search_input">
+                                        <input type="date" class="check_in search_input" name="returnDateSearch"
+                                            [(ngModel)]="returnDateSearch"
+                                            (change)="filterList('returnDate', returnDateSearch)">
+
+                                    </div>
+                                </div>
+
+                                <button
+                                    class="button search_button">search<span></span><span></span><span></span></button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Offers -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1 temp_col"></div>
+
+
+            <div class="col-lg-12 pt-5 pb-5">
+                <!-- Offers Grid -->
+
+                <div class="offers_grid">
+
+                    <!-- Offers Item -->
+
+                    <div class="offers_item rating_4">
+                        <div class="row pb-5" *ngFor="let item of filterResult; let i = index">
+                            <div class="col-lg-1 col-md-1 col-sm-1 temp_col"></div>
+                            <div class="col-lg-4 col-md-10 col-sm-10 w-100 photo">
+                                <div class="offers_image_container p-0">
+                                    <div id="carouselExampleControls{{i}}" class="carousel slide" data-ride="carousel"
+                                        style="height: 100%; width: 100%">
+                                        <div class="carousel-inner">
+                                            
+                                            <div class="carousel-item " *ngFor="let image of item.oneListImages; let isFirst = first"
+                                            [class.active]="isFirst">
+                                            
+                                                <img class="d-block w-100" src="http://localhost:9091/downloadFile/{{image}}"
+                                                    height="267px" alt="First slide">
+                                            
+                                               
+                                            </div>
+                                            <div class="offer_name"><a href="#">{{item.title}}</a></div>
+                                            
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselExampleControls{{i}}" role="button"
+                                            data-slide="prev" >
+                                            <span class="carousel-control-prev-icon"  aria-hidden="true"></span>
+                                            <span class="sr-only" >Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselExampleControls{{i}}" role="button"
+                                            data-slide="next" >
+                                            <span class="carousel-control-next-icon"  aria-hidden="true"></span>
+                                            <span class="sr-only" >Next</span>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 pffset-md-1 col-md-10 offset-sm-1 col-sm-10">
+                                <div class="offers_content">
+                                    <div class="offers_price">{{item.title}} A {{item.price}}DT</div>
+                                    <div class="offer_reviews_title p-2" style="font-size: 1.2em">
+                                        du {{item.departDate | date : 'shortDate'}} au
+                                        {{item.returnDate | date : 'shortDate'}}</div>
+                                    <div class="rating_r rating_r_4 offers_rating" data-rating="4">
+                                        <i></i>
+                                        <i></i>
+                                        <i></i>
+                                        <i></i>
+                                        <i></i>
+                                    </div>
+                                    <p class="offers_text">{{item.description}}</p>
+                                    <div class="offers_icons">
+                                        <ul class="offers_icons_list">
+                                            <li class="offers_icons_item"><img src="../../../assets/images/post.png"
+                                                    alt=""></li>
+                                            <li class="offers_icons_item"><img src="../../../assets/images/compass.png"
+                                                    alt=""></li>
+                                            <li class="offers_icons_item"><img src="../../../assets/images/bicycle.png"
+                                                    alt=""></li>
+                                            <li class="offers_icons_item"><img src="../../../assets/images/sailboat.png"
+                                                    alt="">
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="offers_link float-right"><a href="" data-toggle="modal"
+                                            data-target="#exampleModal-4" (click)="onClickCompanyContact(i)">company's
+                                            contact</a></div>
+                                    <div class="modal demo-modal" id="exampleModal-4" *ngIf="ModalCompany">
+                                        <div class="modal-dialog modal-md">
+                                            <div class="modal-content">
+                                                <div class="modal-header col-md-10 offset-md-1 col-sm-8 offset-sm-2">
+                                                    <img src="http://localhost:9091/downloadFile/{{ModalCompany.image}}" alt="profile"
+                                                            class="w-25 rounded-circle m-3 taille" />
+                                                    <h5 class="modal-title">{{ModalCompany.companyName}}</h5>
+
+                                                </div>
+                                                <div class="modal-body text-center m-auto">
+                                                    <p class="text-center">{{ModalCompany.address}}</p>
+                                                    <p class="text-center">{{ModalCompany.cP}}, {{ModalCompany.city}}
+                                                    </p>
+                                                    <p class="text-center">Telephone : {{ModalCompany.tel}}</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-light"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->

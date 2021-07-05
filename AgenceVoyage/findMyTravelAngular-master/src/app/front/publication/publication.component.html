@@ -1,0 +1,244 @@
+<!-- Home -->
+
+<div class="home">
+    <div class="home_background parallax-window" data-parallax="scroll" data-image-src=""><img
+            src="../../../assets/images/about_background.jpg"></div>
+    <div class="home_content">
+        <div class="home_title">our offers</div>
+    </div>
+</div>
+
+<!-- Offers -->
+
+<div class="offers">
+
+    <!-- Search -->
+    <div class="search">
+        <div class="search_inner">
+
+            <!-- Search Contents -->
+
+            <div class="container fill_height no-padding">
+                <div class="row fill_height no-margin">
+                    <div class="col fill_height no-padding" style="padding-top: 40px">
+
+                        <!-- Search Tabs -->
+
+                        <div class="search_tabs_container">
+                            <div
+                                class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                                <div
+                                    class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+                                    <img src="../../../assets/images/suitcase.png" alt=""><span>hotels</span></div>
+                                <div
+                                    class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+                                    <img src="../../../assets/images/bus.png" alt="">car rentals</div>
+                                <div
+                                    class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+                                    <img src="../../../assets/images/departure.png" alt="">flights</div>
+                                <div
+                                    class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+                                    <img src="../../../assets/images/island.png" alt="">trips</div>
+                                <div
+                                    class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+                                    <img src="../../../assets/images/cruise.png" alt="">cruises</div>
+                                <div
+                                    class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+                                    <img src="../../../assets/images/diving.png" alt="">activities</div>
+                            </div>
+                        </div>
+
+                        <!-- Search Panel -->
+
+                        <div class="search_panel active">
+                            <form id="search_form_1"
+                                class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                                <div class="search_item">
+                                    <div>destination</div>
+                                    <input type="text" (keyup)="filterList('destination', addressSearch)"
+                                        class="destination search_input" required="required" name="address"
+                                        [(ngModel)]="addressSearch">
+                                </div>
+                                <div class="search_item">
+                                    <div>price min</div>
+                                    <input type="number" (keyup)="filterList('minPrice', costSearchMin)"
+                                        class="check_in search_input" name="cost" [(ngModel)]="costSearchMin">
+                                </div>
+                                <div class="search_item">
+                                    <div>price max</div>
+                                    <input type="number" (keyup)="filterList('maxPrice', costSearchMax)"
+                                        name="costSearchMax" [(ngModel)]="costSearchMax" class="check_out search_input">
+                                </div>
+                                <div class="search_item" style="height: 79px">
+                                    <div>duration(days)</div>
+                                    <select name="duration" id="adults_1"
+                                        (change)="filterList('duration', durationSearch)"
+                                        class="dropdown_item_select search_input" [(ngModel)]="durationSearch">
+                                        <option [ngValue]="null"></option>
+                                        <option [ngValue]="1">01</option>
+                                        <option [ngValue]="2">02</option>
+                                        <option [ngValue]="3">03</option>
+                                        <option [ngValue]="4">04</option>
+                                        <option [ngValue]="5">05</option>
+                                        <option [ngValue]="6">06</option>
+                                        <option [ngValue]="7">07</option>
+                                        <option [ngValue]="8">08</option>
+                                        <option [ngValue]="9">09</option>
+                                        <option [ngValue]="10">10</option>
+                                        <option [ngValue]="11">11</option>
+                                        <option [ngValue]="12">12</option>
+                                        <option [ngValue]="13">13</option>
+                                        <option [ngValue]="14">14</option>
+                                        <option [ngValue]="15">15</option>
+                                        <option [ngValue]="16">16</option>
+                                        <option [ngValue]="17">17</option>
+                                        <option [ngValue]="18">18</option>
+                                        <option [ngValue]="19">19</option>
+                                        <option [ngValue]="20">20</option>
+                                        <option [ngValue]="21">21</option>
+                                        <option [ngValue]="22">22</option>
+                                        <option [ngValue]="23">23</option>
+                                        <option [ngValue]="24">24</option>
+                                        <option [ngValue]="25">25</option>
+                                        <option [ngValue]="26">26</option>
+                                        <option [ngValue]="27">27</option>
+                                        <option [ngValue]="28">28</option>
+                                        <option [ngValue]="29">29</option>
+                                        <option [ngValue]="30">30</option>
+                                    </select>
+                                </div>
+
+                                <button
+                                    class="button search_button">search<span></span><span></span><span></span></button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Offers -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1 temp_col"></div>
+
+
+            <div class="col-lg-12 pt-5 pb-5">
+                <!-- Offers Grid -->
+
+                <div class="offers_grid">
+
+                    <!-- Offers Item -->
+
+                    <div class="offers_item rating_4">
+                        <div class="row pb-5" *ngFor="let item of filterResult; let i = index">
+                            <div class="col-lg-1 col-md-1 col-sm-1 temp_col"></div>
+                            <div class="col-lg-4 col-md-10 col-sm-10 w-100 photo">
+                                <div class="offers_image_container p-0">
+                                    <div id="carouselExampleControls{{i}}" class="carousel slide" data-ride="carousel"
+                                        style="height: 100%; width: 100%">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item "  *ngFor="let image of item.listImage;  let isFirst = first"
+                                            [class.active]="isFirst">
+                                                <img class="d-block w-100" src="http://localhost:9091/downloadFile/{{image.link}}"
+                                                    height="267px" alt="First slide">
+                                                <div class="offer_name"><a href="#">{{item.address}}</a></div>
+                                            </div>
+                                            
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselExampleControls{{i}}" role="button"
+                                            data-slide="prev" >
+                                            <span class="carousel-control-prev-icon"  aria-hidden="true"></span>
+                                            <span class="sr-only" >Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselExampleControls{{i}}" role="button"
+                                            data-slide="next" >
+                                            <span class="carousel-control-next-icon"  aria-hidden="true"></span>
+                                            <span class="sr-only" >Next</span>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 pffset-md-1 col-md-10 offset-sm-1 col-sm-10">
+                                <div class="offers_content">
+                                    <div class="offers_price">{{item.cost}} DT</div>
+                                    <div class="offer_reviews_title p-2" style="font-size: 1.2em">{{item.duration}}
+                                        jours</div>
+                                    <div class="rating_r rating_r_4 offers_rating" data-rating="4">
+                                        <i></i>
+                                        <i></i>
+                                        <i></i>
+                                        <i></i>
+                                        <i></i>
+                                    </div>
+                                    <p class="offers_text">{{item.description}}</p>
+                                    <div class="offers_icons">
+                                        <ul class="offers_icons_list">
+                                            <li class="offers_icons_item"><img src="../../../assets/images/post.png"
+                                                    alt=""></li>
+                                            <li class="offers_icons_item"><img src="../../../assets/images/compass.png"
+                                                    alt=""></li>
+                                            <li class="offers_icons_item"><img src="../../../assets/images/bicycle.png"
+                                                    alt=""></li>
+                                            <li class="offers_icons_item"><img src="../../../assets/images/sailboat.png"
+                                                    alt="">
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="offer_reviews">
+                                        <div class="offer_reviews_content">
+                                            <div class="offer_reviews_title">{{item.count}} Like</div>
+                                            
+                                        </div>
+                                        <div class="text-center offer_reviews_rating" *ngIf="active && role=='client'"><i
+                                            class="fa fa-heart" alt="vote" [ngStyle]="{'color': (isVote(item) ? '#fa9e1b' : 'grey')}" (click)="onClickVote(item)"></i>
+                                    </div>
+                                        <div class="text-center offer_reviews_rating" *ngIf="!active"><a href="" data-toggle="modal" data-target="#exampleModal-4"><i
+                                                class="fa fa-heart" alt="vote" [ngStyle]="{'color': (isVote(item) ? '#fa9e1b' : 'grey')}" (click)="onClickVote(item)"></i></a>
+                                        </div>
+                                        <div class="modal demo-modal" id="exampleModal-4">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                 
+                                                  <button type="button" class="close" data-dismiss="modal">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body text-center m-auto">
+                                                  <p class="text-center">Create an account or sign in to FindMyTravel to continue.</p>
+                                                  <button type="button" data-dismiss="modal" [routerLink]="['/login']"  class="btn w-50" style="background-color: #31124b; opacity: 0.5; color:white">Login</button>
+                                                  <div class="text-center mt-4 font-weight-light"> Don't have an account? <a class="text-primary" (click)="onClickCreate()">Create</a>
+                                                  </div>
+                                                  <div *ngIf="isOpened" class="create">
+                                                    <div><a class="text-primary" data-dismiss="modal" [routerLink]="['/registerClient']" >Register Client</a></div>
+                                                    <div><a class="text-primary" data-dismiss="modal" [routerLink]="['/registerCompany']" >Register Company</a></div>
+                                                  </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                        
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                           
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->

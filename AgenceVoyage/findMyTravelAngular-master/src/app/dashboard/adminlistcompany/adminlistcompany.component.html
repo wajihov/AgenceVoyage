@@ -1,0 +1,39 @@
+<div class="container">
+        <div class="row card">
+                <div class="col-auto card-body">
+                    <h4 class="card-title">Company list</h4>
+                    <label for="filterText">Filter:</label><input class="form-control" type="text" name="filterText"
+                        [(ngModel)]="filterText">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> Company </th>
+                                <th> Company name </th>
+                                <th> Address </th>
+                                <th> City </th>
+                                <th> Code postal </th>
+                                <th> Telephone </th>
+                                <th> Status </th>
+                                <th> Action </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let company of listCompany | filter:filterText">
+                                <td class="py-1">
+                                    <img src="http://localhost:9091/downloadFile/{{company.image}}" alt="image">
+                                </td>
+                                <td> {{company.companyName}} </td>
+                                <td>
+                                    {{company.address}}
+                                </td>
+                                <td>{{company.city}} </td>
+                                <td>{{company.cP}} </td>
+                                <td>{{company.tel}} </td>
+                                <td> {{company.status}} </td>
+                                <td> <i *ngIf="company.status!='deleted'" class="mdi mdi-delete-forever-outline" style="cursor: pointer; align-self: center;" (click)="showSwal(company.id)"></i> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+</div>

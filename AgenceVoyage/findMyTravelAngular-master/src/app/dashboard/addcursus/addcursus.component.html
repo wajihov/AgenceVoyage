@@ -1,0 +1,108 @@
+<div class="container">
+    <div class="form-group row">
+        <div class="col-12">
+            <label class="col-form-label">Filter</label>
+            <input class="form-control" type="text" name="filter" [(ngModel)]="filterText" autocomplete="off"
+                placeholder=" Tap filter here.">
+        </div>
+    </div>
+    <div class="row" style="overflow-y: auto; height: 500px;">
+        <div class="card-columns">
+            <div *ngFor="let publication of listActivePublication | filter: filterText">
+                <div class="card" style="cursor: pointer;" [ngStyle]="getMyStyles(publication)"
+                    (click)="selection(publication)">
+                    <img class="card-img-top" src="http://localhost:9091/downloadFile/{{publication.listImage[0].link}}"
+                        alt="card images">
+
+                    <div class="card-body">
+                        <p class="text-muted">{{publication.address}}</p>
+                        <h5>{{publication.description}}</h5>
+                        <div class="d-flex align-items-center justify-content-between text-muted border-top py-3 mt-3">
+                            <p class="mb-0">Published on {{publication.createdDate | date:'fullDate'}}</p>
+                            <div class="wrapper d-flex align-items-center">
+                                <small class="mr-2">93</small>
+                                <i class="mdi mdi-heart-outline"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <form [formGroup]="dataCursus" (ngSubmit)="share()">
+                <div class="form-group row">
+                    <div class="col-lg-12">
+                        <label class="col-form-label">({{listPublicationSelected.length}}) Items
+                            Selected</label>
+                        <div id="itemCont" *ngIf="isEmpty">
+                            <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Must select publication
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <label class="col-form-label">Title</label>
+                    </div>
+                    <div class="col-lg-12">
+                        <input class="form-control" name="defaultconfig-2" id="defaultconfig-2" type="text"
+                            formControlName="title">
+                        <div *ngIf="dataCursus.controls.title.errors">
+                            <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Title is required
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <label class="col-form-label">Description</label>
+                    </div>
+                    <div class="col-lg-12">
+                        <textarea id="maxlength-textarea" class="form-control" maxlength="400" rows="2"
+                            placeholder="This text has a limit of 400 chars." formControlName="description"></textarea>
+                        <div *ngIf="dataCursus.controls.description.errors">
+                            <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Description is required
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <label class="col-form-label">Price</label>
+                    </div>
+                    <div class="col-lg-12">
+                        <input class="form-control" name="defaultconfig-2" id="defaultconfig-2" type="number"
+                            step="0.001" placeholder="0.0" formControlName="price">
+                        <div *ngIf="dataCursus.controls.price.errors">
+                            <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Price is required
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <label class="col-form-label">Depart Date</label>
+                    </div>
+                    <div class="col-6">
+                        <label class="col-form-label">Return Date</label>
+                    </div>
+                    <div class="col-6">
+                        <input class="form-control" name="defaultconfig-2" id="defaultconfig-2" type="date" step="0.001"
+                            placeholder="0.0" formControlName="departDate">
+                        <div *ngIf="dataCursus.controls.departDate.errors">
+                            <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Depart date is required
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <input class="form-control" name="defaultconfig-2" id="defaultconfig-2" type="date" step="0.001"
+                            placeholder="0.0" formControlName="returnDate">
+                        <div *ngIf="dataCursus.controls.returnDate.errors">
+                            <p style="color: red;"><i class="fa fa-exclamation-triangle"></i> Return date is required
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success pull-right"
+                    [disabled]="dataCursus.controls.returnDate.errors || dataCursus.controls.departDate.errors || dataCursus.controls.price.errors || dataCursus.controls.description.errors || isEmpty">Share</button>
+            </form>
+        </div>
+
+    </div>
+</div>

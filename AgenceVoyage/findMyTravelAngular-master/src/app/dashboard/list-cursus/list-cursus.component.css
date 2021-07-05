@@ -1,0 +1,823 @@
+/*-------------------------------------------------------------------
+  ===== Table of Contents =====
+
+  * Bootstrap functions
+  * Template variables
+  * SCSS Compass Functions
+  * Boostrap Main SCSS
+  * Template mixins
+    + Animation Mixins
+    + Background Mixins
+    + Badge Mixins
+    + Button Mixins
+    + Miscellaneous Mixins
+    + BlockQuote Mixins
+    + Cards Mixins
+    + Color Functions Mixins
+    + Tooltips
+    + popovers
+  * Core Styles
+    + Reset Styles
+    + Fonts
+    + Functions
+    + Backgrounds
+    + Typography
+    + Miscellaneous
+    + Footer
+    + Layouts
+    + Utilities
+    + Demo styles
+  * Components
+    + Accordions
+    + Badges
+    + Bootstrap Alerts
+    + Boostrap Progress
+    + Buttons
+    + Breadcrumbs
+    + Cards
+    + Checkboxes and Radios
+    + Dropdowns
+    + Forms
+    + Google maps
+    + Icons
+    + Loaders
+    + Lists
+    + Modals
+    + Pagination
+    + Popover
+    + Preview
+    + Tables
+    + Tabs
+    + Timeline
+    + Todo List
+    + Tooltips
+    + User Profile
+    + Pricing table
+  * Email
+    + Mail Sidebar
+    + Mail List Container
+    + Message Content
+  * Plugin Overrides
+    + Ace Editor
+    + Avgrund Popup
+    + Bootstrap Tour
+    + Chartist
+    + CodeMirror
+    + Colcade
+    + Colorpicker
+    + Context Menu
+    + Data Tables
+    + Datepicker
+    + Dropify
+    + Dropzone
+    + Flot chart
+    + Full Calendar
+    + Google Charts
+    + Icheck
+    + Jquery File Upload
+    + Js-grid
+    + Jvectormap
+    + Light Gallery
+    + Listify
+    + No-ui-slider
+    + Owl-carousel
+    + Progressbar-js
+    + Pws-tabs
+    + Quill Editor
+    + Rating
+    + Select2
+    + Summernote Editor
+    + SweetAlert
+    + Switchery
+    + Tags
+    + TinyMCE Editor
+    + Toast
+    + Typeahead
+    + Wysi Editor
+    + X-editable
+    + Wizard
+  * Landing screens
+    + Auth
+    + Lock Screen
+-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+/* === Import Bootstrap functions and variables === */
+/*-------------------------------------------------------------------*/
+/* === Import template variables === */
+/*-------------------------------------------------------------------*/
+/* === SCSS Compass Functions === */
+
+/*-------------------------------------------------------------------*/
+/* === Boostrap Main SCSS === */
+/*!
+ * Bootstrap v4.3.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+ :root {
+  --blue: #5E50F9;
+  --indigo: #6610f2;
+  --purple: #6a008a;
+  --pink: #E91E63;
+  --red: #f96868;
+  --orange: #f2a654;
+  --yellow: #f6e84e;
+  --green: #46c35f;
+  --teal: #58d8a3;
+  --cyan: #57c7d4;
+  --white: #ffffff;
+  --gray: #6c757d;
+  --gray-dark: #0f1531;
+  --blue: #5E50F9;
+  --indigo: #6610f2;
+  --purple: #6a008a;
+  --pink: #E91E63;
+  --red: #f96868;
+  --orange: #f2a654;
+  --yellow: #f6e84e;
+  --green: #46c35f;
+  --teal: #58d8a3;
+  --cyan: #57c7d4;
+  --white: #ffffff;
+  --gray: #434a54;
+  --gray-light: #aab2bd;
+  --gray-lighter: #e8eff4;
+  --gray-lightest: #e6e9ed;
+  --black: #000000;
+  --primary: #b66dff;
+  --secondary: #c3bdbd;
+  --success: #1bcfb4;
+  --info: #198ae3;
+  --warning: #fed713;
+  --danger: #fe7c96;
+  --light: #f8f9fa;
+  --dark: #3e4b5b;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #343a40;
+  text-align: left;
+  background-color: #fff; }
+
+h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem; }
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem; }
+
+img {
+  vertical-align: middle;
+  border-style: none; }
+
+button:not(:disabled),
+[type="button"]:not(:disabled),
+[type="reset"]:not(:disabled),
+[type="submit"]:not(:disabled) {
+  cursor: pointer; }
+
+::-webkit-file-upload-button {
+  font: inherit;
+  -webkit-appearance: button; }
+
+h4 {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2; }
+
+h4 {
+  font-size: 1.5rem; }
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -20px;
+  margin-left: -20px; }
+
+.lightGallery .image-tile, .col-auto, .col-lg-12 {
+  position: relative;
+  width: 100%;
+  padding-right: 20px;
+  padding-left: 20px; }
+
+.col-auto {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  width: auto;
+  max-width: 100%; }
+
+.lightGallery .image-tile {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  max-width: 50%; }
+
+@media (min-width: 768px) {
+  .lightGallery .image-tile {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%; }
+  .lightGallery .image-tile {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 33.33333%;
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%; } }
+
+@media (min-width: 992px) {
+  .lightGallery .image-tile {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%; }
+  .col-lg-12 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%; } }
+
+@media (min-width: 1200px) {
+  .lightGallery .image-tile {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%; } }
+
+.was-validated .custom-control-input:valid:focus:not(:checked) ~ .custom-control-label::before, .custom-control-input.is-valid:focus:not(:checked) ~ .custom-control-label::before {
+  border-color: #28a745; }
+
+.was-validated .custom-control-input:invalid:focus:not(:checked) ~ .custom-control-label::before, .custom-control-input.is-invalid:focus:not(:checked) ~ .custom-control-label::before {
+  border-color: #dc3545; }
+  .btn-primary:not(:disabled):not(.disabled):active, .wizard > .actions a:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .wizard > .actions a:not(:disabled):not(.disabled).active {
+    color: #fff;
+    background-color: #9d3aff;
+    border-color: #962dff; }
+    .btn-primary:not(:disabled):not(.disabled):active:focus, .wizard > .actions a:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .wizard > .actions a:not(:disabled):not(.disabled).active:focus {
+      -webkit-box-shadow: 0 0 0 0.2rem rgba(193, 131, 255, 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(193, 131, 255, 0.5); }
+  .btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active {
+    color: #212529;
+    background-color: #aba2a2;
+    border-color: #a59c9c; }
+    .btn-secondary:not(:disabled):not(.disabled):active:focus, .btn-secondary:not(:disabled):not(.disabled).active:focus {
+      -webkit-box-shadow: 0 0 0 0.2rem rgba(171, 166, 167, 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(171, 166, 167, 0.5); }
+  .btn-success:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active {
+    color: #fff;
+    background-color: #15a28d;
+    border-color: #149783; }
+    .btn-success:not(:disabled):not(.disabled):active:focus, .btn-success:not(:disabled):not(.disabled).active:focus {
+      -webkit-box-shadow: 0 0 0 0.2rem rgba(28, 182, 159, 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(28, 182, 159, 0.5); }
+  .btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled).active {
+    color: #fff;
+    background-color: #146eb5;
+    border-color: #1367aa; }
+    .btn-info:not(:disabled):not(.disabled):active:focus, .btn-info:not(:disabled):not(.disabled).active:focus {
+      -webkit-box-shadow: 0 0 0 0.2rem rgba(60, 156, 231, 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(60, 156, 231, 0.5); }
+  .btn-warning:not(:disabled):not(.disabled):active, .btn-warning:not(:disabled):not(.disabled).active {
+    color: #212529;
+    background-color: #ddb901;
+    border-color: #d0ae01; }
+    .btn-warning:not(:disabled):not(.disabled):active:focus, .btn-warning:not(:disabled):not(.disabled).active:focus {
+      -webkit-box-shadow: 0 0 0 0.2rem rgba(221, 188, 22, 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(221, 188, 22, 0.5); }
+  .btn-danger:not(:disabled):not(.disabled):active, .btn-danger:not(:disabled):not(.disabled).active {
+    color: #fff;
+    background-color: #fe496d;
+    border-color: #fe3d63; }
+    .btn-danger:not(:disabled):not(.disabled):active:focus, .btn-danger:not(:disabled):not(.disabled).active:focus {
+      -webkit-box-shadow: 0 0 0 0.2rem rgba(221, 111, 134, 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(221, 111, 134, 0.5); }
+  .btn-light:not(:disabled):not(.disabled):active, .btn-light:not(:disabled):not(.disabled).active {
+    color: #212529;
+    background-color: #dae0e5;
+    border-color: #d3d9df; }
+    .btn-light:not(:disabled):not(.disabled):active:focus, .btn-light:not(:disabled):not(.disabled).active:focus {
+      -webkit-box-shadow: 0 0 0 0.2rem rgba(216, 217, 219, 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(216, 217, 219, 0.5); }
+  .btn-dark:not(:disabled):not(.disabled):active, .btn-dark:not(:disabled):not(.disabled).active {
+    color: #fff;
+    background-color: #29323d;
+    border-color: #242c35; }
+    .btn-dark:not(:disabled):not(.disabled):active:focus, .btn-dark:not(:disabled):not(.disabled).active:focus {
+      -webkit-box-shadow: 0 0 0 0.2rem rgba(91, 102, 116, 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(91, 102, 116, 0.5); }
+  .btn-outline-primary:not(:disabled):not(.disabled):active, .wizard > .actions .disabled a:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active, .wizard > .actions .disabled a:not(:disabled):not(.disabled).active {
+    color: #fff;
+    background-color: #b66dff;
+    border-color: #b66dff; }
+    .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .wizard > .actions .disabled a:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus, .wizard > .actions .disabled a:not(:disabled):not(.disabled).active:focus {
+      -webkit-box-shadow: 0 0 0 0.2rem rgba(182, 109, 255, 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(182, 109, 255, 0.5); }
+  .btn-outline-secondary:not(:disabled):not(.disabled):active, .editable-container.editable-inline .editableform .control-group .editable-buttons .editable-cancel:not(:disabled):not(.disabled):active, .btn-outline-secondary:not(:disabled):not(.disabled).active, .editable-container.editable-inline .editableform .control-group .editable-buttons .editable-cancel:not(:disabled):not(.disabled).active {
+    color: #212529;
+    background-color: #c3bdbd;
+    border-color: #c3bdbd; }
+    .btn-outline-secondary:not(:disabled):not(.disabled):active:focus, .editable-container.editable-inline .editableform .control-group .editable-buttons .editable-cancel:not(:disabled):not(.disabled):active:focus, .btn-outline-secondary:not(:disabled):not(.disabled).active:focus, .editable-container.editable-inline .editableform .control-group .editable-buttons .editable-cancel:not(:disabled):not(.disabled).active:focus {
+      -webkit-box-shadow: 0 0 0 0.2rem rgba(195, 189, 189, 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(195, 189, 189, 0.5); }
+  .btn-outline-success:not(:disabled):not(.disabled):active, .editable-container.editable-inline .editableform .control-group .editable-buttons .editable-submit:not(:disabled):not(.disabled):active, .btn-outline-success:not(:disabled):not(.disabled).active, .editable-container.editable-inline .editableform .control-group .editable-buttons .editable-submit:not(:disabled):not(.disabled).active {
+    color: #212529;
+    background-color: #1bcfb4;
+    border-color: #1bcfb4; }
+    .btn-outline-success:not(:disabled):not(.disabled):active:focus, .editable-container.editable-inline .editableform .control-group .editable-buttons .editable-submit:not(:disabled):not(.disabled):active:focus, .btn-outline-success:not(:disabled):not(.disabled).active:focus, .editable-container.editable-inline .editableform .control-group .editable-buttons .editable-submit:not(:disabled):not(.disabled).active:focus {
+      -webkit-box-shadow: 0 0 0 0.2rem rgba(27, 207, 180, 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(27, 207, 180, 0.5); }
+  .btn-outline-info:not(:disabled):not(.disabled):active, .btn-outline-info:not(:disabled):not(.disabled).active {
+    color: #fff;
+    background-color: #198ae3;
+    border-color: #198ae3; }
+    .btn-outline-info:not(:disabled):not(.disabled):active:focus, .btn-outline-info:not(:disabled):not(.disabled).active:focus {
+      -webkit-box-shadow: 0 0 0 0.2rem rgba(25, 138, 227, 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(25, 138, 227, 0.5); }
+  .btn-outline-warning:not(:disabled):not(.disabled):active, .btn-outline-warning:not(:disabled):not(.disabled).active {
+    color: #212529;
+    background-color: #fed713;
+    border-color: #fed713; }
+    .btn-outline-warning:not(:disabled):not(.disabled):active:focus, .btn-outline-warning:not(:disabled):not(.disabled).active:focus {
+      -webkit-box-shadow: 0 0 0 0.2rem rgba(254, 215, 19, 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(254, 215, 19, 0.5); }
+  .btn-outline-danger:not(:disabled):not(.disabled):active, .btn-outline-danger:not(:disabled):not(.disabled).active {
+    color: #212529;
+    background-color: #fe7c96;
+    border-color: #fe7c96; }
+    .btn-outline-danger:not(:disabled):not(.disabled):active:focus, .btn-outline-danger:not(:disabled):not(.disabled).active:focus {
+      -webkit-box-shadow: 0 0 0 0.2rem rgba(254, 124, 150, 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(254, 124, 150, 0.5); }
+  .btn-outline-light:not(:disabled):not(.disabled):active, .btn-outline-light:not(:disabled):not(.disabled).active {
+    color: #212529;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa; }
+    .btn-outline-light:not(:disabled):not(.disabled):active:focus, .btn-outline-light:not(:disabled):not(.disabled).active:focus {
+      -webkit-box-shadow: 0 0 0 0.2rem rgba(248, 249, 250, 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(248, 249, 250, 0.5); }
+  .btn-outline-dark:not(:disabled):not(.disabled):active, .btn-outline-dark:not(:disabled):not(.disabled).active {
+    color: #fff;
+    background-color: #3e4b5b;
+    border-color: #3e4b5b; }
+    .btn-outline-dark:not(:disabled):not(.disabled):active:focus, .btn-outline-dark:not(:disabled):not(.disabled).active:focus {
+      -webkit-box-shadow: 0 0 0 0.2rem rgba(62, 75, 91, 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(62, 75, 91, 0.5); }
+  .custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
+    border-color: #80bdff; }
+  .custom-control-input:not(:disabled):active ~ .custom-control-label::before {
+    color: #fff;
+    background-color: #b3d7ff;
+    border-color: #b3d7ff; }
+
+.card {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.3125rem; }
+
+.card-body {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1.25rem; }
+
+.card-title {
+  margin-bottom: 0.75rem; }
+
+.card-text:last-child {
+  margin-bottom: 0; }
+  .close:not(:disabled):not(.disabled):hover, .close:not(:disabled):not(.disabled):focus {
+    opacity: .75; }
+
+@supports ((position: -webkit-sticky) or (position: sticky)) { }
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    text-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important; }
+  img {
+    page-break-inside: avoid; }
+  p {
+    orphans: 3;
+    widows: 3; }
+  @page {
+    size: a3; }
+  body {
+    min-width: 992px !important; } }
+
+/*-------------------------------------------------------------------*/
+/* === Template mixins === */
+/* Miscellaneous Mixins */
+
+/* Animation Mixins */
+
+/*-------------------------------------------------------------------*/
+/* === Core Styles === */
+/* Reset Styles */
+body {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden; }
+
+div,
+h4,
+p {
+  text-shadow: none; }
+
+body, div {
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+
+/* Fonts */
+@font-face {
+  font-family: 'ubuntu-light';
+  src: url("http://www.bootstrapdash.com/demo/purple/jquery/template/assets/fonts/Ubuntu/Ubuntu-Light.eot");
+  /* IE9 Compat Modes */
+  src: url("http://www.bootstrapdash.com/demo/purple/jquery/template/assets/fonts/Ubuntu/Ubuntu-Light.woff2") format("woff2"), url("http://www.bootstrapdash.com/demo/purple/jquery/template/assets/fonts/Ubuntu/Ubuntu-Light.woff") format("woff"), url("http://www.bootstrapdash.com/demo/purple/jquery/template/assets/fonts/Ubuntu/Ubuntu-Light.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'ubuntu-regular';
+  src: url("http://www.bootstrapdash.com/demo/purple/jquery/template/assets/fonts/Ubuntu/Ubuntu-Regular.eot");
+  /* IE9 Compat Modes */
+  src: url("http://www.bootstrapdash.com/demo/purple/jquery/template/assets/fonts/Ubuntu/Ubuntu-Regular.woff2") format("woff2"), url("http://www.bootstrapdash.com/demo/purple/jquery/template/assets/fonts/Ubuntu/Ubuntu-Regular.woff") format("woff"), url("http://www.bootstrapdash.com/demo/purple/jquery/template/assets/fonts/Ubuntu/Ubuntu-Regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'ubuntu-medium';
+  src: url("http://www.bootstrapdash.com/demo/purple/jquery/template/assets/fonts/Ubuntu/Ubuntu-Medium.eot");
+  /* IE9 Compat Modes */
+  src: url("http://www.bootstrapdash.com/demo/purple/jquery/template/assets/fonts/Ubuntu/Ubuntu-Medium.woff2") format("woff2"), url("http://www.bootstrapdash.com/demo/purple/jquery/template/assets/fonts/Ubuntu/Ubuntu-Medium.woff") format("woff"), url("http://www.bootstrapdash.com/demo/purple/jquery/template/assets/fonts/Ubuntu/Ubuntu-Medium.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'ubuntu-bold';
+  src: url("http://www.bootstrapdash.com/demo/purple/jquery/template/assets/fonts/Ubuntu/Ubuntu-Bold.eot");
+  /* IE9 Compat Modes */
+  src: url("http://www.bootstrapdash.com/demo/purple/jquery/template/assets/fonts/Ubuntu/Ubuntu-Bold.woff2") format("woff2"), url("http://www.bootstrapdash.com/demo/purple/jquery/template/assets/fonts/Ubuntu/Ubuntu-Bold.woff") format("woff"), url("http://www.bootstrapdash.com/demo/purple/jquery/template/assets/fonts/Ubuntu/Ubuntu-Bold.ttf") format("truetype"); }
+
+/* Typography */
+body {
+  font-size: 1rem;
+  font-family: "ubuntu-regular", sans-serif;
+  font-weight: initial;
+  line-height: normal;
+  -webkit-font-smoothing: antialiased; }
+
+h4 {
+  font-family: "ubuntu-medium", sans-serif; }
+
+p {
+  font-size: 0.875rem; }
+
+h4 {
+  font-size: 1.13rem; }
+
+p {
+  font-size: .9375rem;
+  line-height: 1.5; }
+
+/* Miscellanoeous */
+body,
+html {
+  overflow-x: hidden;
+  padding-right: 0 !important; }
+
+*:-moz-full-screen,
+*:-webkit-full-screen,
+*:fullscreen *:-ms-fullscreen {
+  overflow: auto; }
+
+/* Footer */
+
+/* Utilities */
+.grid-margin {
+  margin-bottom: 2.5rem; }
+
+/* Demo Styles */
+
+/* Dashboard */
+
+/*-------------------------------------------------------------------*/
+/* === Components === */
+/* Accordions */
+
+/* Badges */
+
+/*Badge variations*/
+
+/*Badge gradient variations*/
+
+/*Badge outlined variations*/
+
+/* Bootstrap Alerts */
+
+/* Bootstrap Progress */
+
+/* Buttons */
+
+/*social buttons*/
+
+/* inverse buttons */
+
+/* gradient buttons */
+
+/* Breadcrumbs */
+
+/* inverse breadcrumb */
+
+/* Cards */
+.card {
+  border: 0;
+  background: #fff; }
+  .card .card-body {
+    padding: 2.5rem 2.5rem; }
+  .card .card-title {
+    color: #343a40;
+    margin-bottom: 0.75rem;
+    text-transform: capitalize;
+    font-family: "ubuntu-medium", sans-serif;
+    font-size: 1.125rem; }
+
+.card-inverse-primary {
+  background: rgba(182, 109, 255, 0.2);
+  border: 1px solid #a764eb;
+  color: #8a53c2; }
+
+/* Checkboxes and Radios */
+
+/* Dropdowns */
+
+/* Forms */
+
+/* Icons */
+
+/* Loaders */
+
+/* Pixel loader */
+
+/* Square box loader */
+
+/* Circle loader */
+
+/* Jumping dots loader */
+
+/* Bar loader */
+
+/* Square path loader */
+
+/* Dot opacity loader */
+
+/* Flip square */
+
+/* Moving square loader */
+
+/* Lists */
+
+/* Modals */
+
+/* Pagination */
+
+/* pagination variations */
+
+/* Popovers */
+
+/* Preview */
+
+/* Tables */
+
+/* gradient pills */
+
+/* Timeline */
+
+/* Tabs */
+
+/* Tooltips */
+
+/* Pricing table */
+
+/*-------------------------------------------------------------------*/
+/* === Email === */
+/* Mail Sidebar */
+
+/* Mail List Container */
+
+/* Message Content */
+
+/*-------------------------------------------------------------------*/
+/* === Plugin overrides === */
+/* Ace Editor */
+
+/* Avgrund Popup */
+
+/* Optional close button styles */
+
+/* Chartist */
+
+/* CodeMirror */
+
+/* Colcade */
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* hide two middle */
+
+/* Colorpicker */
+
+/* Context Menu */
+
+/* Data Tables */
+
+/* Datepicker */
+
+/* Dropify */
+
+/* Dropzone */
+
+/* Flot chart */
+
+/* Full Calendar */
+
+/* Google Charts */
+
+/* Icheck */
+
+/* Jquery File Upload */
+
+/* Js-grid */
+
+/* Jvectormap */
+
+/* Light Gallery */
+.lightGallery {
+  width: 100%;
+  margin: 0; }
+  .lightGallery .image-tile {
+    position: relative;
+    width: 200px !important;
+    height: 200px !important;
+    margin-bottom: 30px; }
+
+/* Listify */
+
+/* No-ui-slider */
+
+/* Slider Color variations */
+
+/* Owl-carousel */
+
+/* Progressbar-js */
+
+/* Pws-tabs */
+
+/* Quill Editor */
+
+/* Rating */
+
+/* Select2 */
+
+/* Summernote Editor */
+
+/* SweetAlert */
+
+/* Switchery */
+
+/* Tags */
+
+/* TinyMCE Editor */
+
+/* Toast */
+
+/* Typeahead */
+
+/* Wysi Editor */
+
+/* X-editable */
+
+/* Wizard */
+
+/*-------------------------------------------------------------------*/
+/* === Landing screens === */
+/* Auth */
+
+/* Lock Screen */
+
+/* Portfolio */
+
+/* Settings Panel */
+
+/* Navbar */
+
+/* Navbar color variations */
+
+/* Sidebar */
+
+/* style for off-canvas menu*/
+
+/* Layouts */
+
+/*# sourceMappingURL=style.css.map */
+.btn-inverse-primary {
+  background-color: rgba(182, 109, 255, 0.2);
+  background-image: none;
+  border-color: rgba(182, 109, 255, 0); }
+  .btn-inverse-primary:not(.btn-inverse-light) {
+    color: #b66dff; }
+  .btn-inverse-primary:hover {
+    color: #ffffff;
+    background-color: #b66dff;
+    border-color: #b66dff; }
+  .btn-inverse-primary:focus {
+    -webkit-box-shadow: 0 0 0 3px rgba(182, 109, 255, 0.5);
+    box-shadow: 0 0 0 3px rgba(182, 109, 255, 0.5); }
+  .btn-inverse-primary:disabled {
+    color: #b66dff;
+    background-color: transparent; }
+  .btn-inverse-primary:active {
+    color: #ffffff;
+    background-color: #b66dff;
+    border-color: #b66dff; }
+
+    .onoffswitch {
+      position: relative; width: 95px;
+      
+  }
+  .onoffswitch-checkbox {
+      display: none;
+  }
+  .onoffswitch-label {
+      display: block; overflow: hidden; cursor: pointer;
+      border: 2px solid #CCCCCC; border-radius: 24px;
+  }
+  .onoffswitch-inner {
+      display: block; width: 200%; margin-left: -100%;
+      transition: margin 0.3s ease-in 0s;
+  }
+  .onoffswitch-inner:before, .onoffswitch-inner:after {
+      display: block; float: left; width: 50%; height: 35px; padding: 0; line-height: 38px;
+      font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+      box-sizing: border-box;
+  }
+  .onoffswitch-inner:before {
+      content: "Active";
+      padding-left: 10px;
+      background-color: #B66DFF; color: #FFFFFF;
+  }
+  .onoffswitch-inner:after {
+      content: "Draft";
+      padding-right: 10px;
+      background-color: #FFFFFF; color: #B66DFF;
+      text-align: right;
+  }
+  .onoffswitch-switch {
+      display: block; width: 18px; margin: 10px;
+      background: #FFFFFF;
+      position: absolute; top: 0; bottom: 0;
+      right: 53px;
+      border: 2px solid #CCCCCC; border-radius: 24px;
+      transition: all 0.3s ease-in 0s; 
+  }
+  .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+      margin-left: 0;
+  }
+  .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+      right: 0px; 
+  }
